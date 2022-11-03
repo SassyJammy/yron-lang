@@ -58,7 +58,7 @@ impl Lexer {
         let mut tokens: Vec<Token> = vec![];
 
         while self.position.index < self.text.len() as i64 {
-            if "\n\t ".contains(self.current_char) {
+            if "\r\n\t ".contains(self.current_char) {
                 self.advance();
                 continue;
             }

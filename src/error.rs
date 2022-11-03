@@ -19,7 +19,7 @@ impl Error {
 
     pub fn to_string(&self) -> String {
         format!(
-            "{}: {} at {}({}, {}) ",
+            "{}: {} in {}({}, {}) ",
             &self.error_name, 
             &self.details, 
             &self.start_position.file_name,
