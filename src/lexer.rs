@@ -1,6 +1,6 @@
 use crate::error::Error;
 use crate::position::Position;
-use crate::token::{Token, TokenType};
+use crate::token::Token;
 
 pub struct Lexer {
     pub text: String,
@@ -48,8 +48,7 @@ impl Lexer {
         }
 
         let result = number_string.parse::<f64>().unwrap();
-        let mut tok = Token::new(TokenType::Number);
-        tok.set_number_value(result);
+        let mut tok = Token::Number(result);
 
         tok
     }
@@ -69,12 +68,12 @@ impl Lexer {
             }
 
             match self.current_char {
-                '+' => tokens.push(Token::new(TokenType::Plus)),
-                '-' => tokens.push(Token::new(TokenType::Minus)),
-                '*' => tokens.push(Token::new(TokenType::Multiply)),
-                '/' => tokens.push(Token::new(TokenType::Divide)),
-                '(' => tokens.push(Token::new(TokenType::Lparen)),
-                ')' => tokens.push(Token::new(TokenType::Rparen)),
+                '+' => tokens.push(Token::Plus),
+                '-' => tokens.push(Token::Minus),
+                '*' => tokens.push(Token::Multiply),
+                '/' => tokens.push(Token::Divide),
+                '(' => tokens.push(Token::Lparen),
+                ')' => tokens.push(Token::Rparen),
                 _ => {
                     let current_char = self.current_char;
                     let start_position: Position = self.position.copy();

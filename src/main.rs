@@ -2,6 +2,8 @@ mod lexer;
 mod token;
 mod error;
 mod position;
+mod nodes;
+mod parser;
 
 use std::io::Write;
 
@@ -27,7 +29,7 @@ fn main() {
         match result {
             Ok(tokens) => {
                 for token in tokens {
-                    println!("{}", token.to_string());
+                    println!("{:?}", token);
                 }
             },
 
